@@ -1,0 +1,21 @@
+{
+  "name": "rxbus",
+  "version": "1.0.0",
+  "description": "rxbus",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "testW": "mocha -w"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "common-env": "^6.1.0",
+    "rxjs": "^5.3.1",
+    "servicebus": "^2.0.10"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.3.0"
+  }
+}
