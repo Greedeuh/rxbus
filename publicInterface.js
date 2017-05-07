@@ -12,6 +12,20 @@ function from(amqp, channel){
     return observable;
 }
 
+function to(amqp, channel, observable){
+    if(!p.checkChannel(channel))
+        throw Error("param channel is : " + typeof channel + " but should be a string");
+    if(!p.checkObservable(observable))
+        throw Error("param observable is : " + typeof observable + " but should be an Observable");
+
+    const bus = p.makeBus(amqp);
+    observable.subscribe(value=>{
+        p.publish(bus, channel, value);
+    });
+
+}
+
 module.exports = {
-    from : from
+    from : from,
+    to: to
 }
