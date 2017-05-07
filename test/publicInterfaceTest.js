@@ -7,14 +7,18 @@ let servicebus = require("servicebus");
 let bus;
 let channel;
 let servicebusObj;
+let i = 0;
 
 beforeEach(()=>{
   bus = config.amqp.host;
   servicebusObj = servicebus.bus({url: bus});
-  channel = "test";
+  channel = "test" + i;
+  i++;
 });
 
+
 describe('from()', function() {
+
   it('should return an observable', ()=>{
     const res = rxbus.from(bus, channel);
     assert.instanceOf(res, Rx.Observable);
@@ -31,7 +35,7 @@ describe('from()', function() {
   it('should return an observable listening on amqp channel', function(done){
     const a = 1;
     const b = "2";
-    const c = "{a:a, b:b}";
+    const c = "bonsoir";
     
     const expect = [a, b, c];
     const res = [];
@@ -57,3 +61,25 @@ describe('from()', function() {
 
 });
 
+describe('to()', function() {
+  
+  beforeEach(()=>{
+    bus = config.amqp.host;
+    servicebusObj = servicebus.bus({url: bus});
+    channel = "test";
+  });
+
+  it("should throw an error if the observable is not an observable", ()=>{
+
+  });
+
+  it("should throw an error if the the channel is not a string", ()=>{
+    
+  });
+
+  it("should publish on the queue", ()=>{
+
+  });
+
+
+});
