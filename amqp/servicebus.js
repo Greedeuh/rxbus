@@ -7,7 +7,7 @@ function makeBus(amqp){
 
 function makeQueue(bus, channel){
     const listen = (callback) => {
-        bus.listen(channel, callback);
+        bus.subscribe(channel, callback);
     }
     return { listen:listen };
 }
