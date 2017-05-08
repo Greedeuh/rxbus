@@ -7,12 +7,17 @@ function makeBus(amqp){
 
 function makeQueue(bus, channel){
     const listen = (callback) => {
-        bus.subscribe(channel, callback);
+        bus.listen(channel, callback);
     }
     return { listen:listen };
 }
 
+function publish(bus, channel, value){
+    bus.publish(channel, value);
+}
+
 module.exports = {
     makeBus: makeBus,
-    makeQueue: makeQueue 
+    makeQueue: makeQueue,
+    publish: publish
 }

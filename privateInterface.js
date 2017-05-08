@@ -18,8 +18,30 @@ function makeQueue(bus, channel){
         throw new Error("Channel is :" + typeof channel + "should be a string");
 }
 
+function publish(bus, channel, value){
+    lib.publish(bus, channel, value);
+}
+
+function checkObservable(observable){
+    if(typeof observable === "observable")
+        return true;
+    else
+        return false;
+}
+
+function checkChannel(channel){
+    if(typeof channel === "string")
+        return true;
+    else
+        return false;
+}
+
 module.exports = {
     bind: bind,
     makeBus: makeBus,
-    makeQueue: makeQueue
+    makeQueue: makeQueue,
+    publish: publish,
+    checkObservable: checkObservable,
+    checkChannel: checkChannel
+
 }
